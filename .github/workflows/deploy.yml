@@ -13,3 +13,20 @@ jobs:
       - name: Github Repository 파일 불러오기
         uses: actions/checkout@v4
         #marketplace에서 확인
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: building
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ap-northeast-2
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Delete S3 files
+        run: |
+         aws s3 rm --recursive s3://facebook-web-page-001
