@@ -28,5 +28,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Delete S3 files
-        run: |
-         aws s3 rm --recursive s3://facebook-web-page-001
+        run: aws s3 rm --recursive s3://facebook-web-page-001
+
+      - name: Upload repository files to S3
+        run: aws s3 cp ./dist s3://facebook-web-page-001/ --recursive
