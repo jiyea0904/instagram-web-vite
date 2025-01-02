@@ -15,3 +15,10 @@ jobs:
     steps:
     - name: Checkout repository
       run: echo "Checkout repository"
+
+    - name: 여러 명령어 문장 작성하기
+    # 여러 Step을 한번에 실행할 수 있다.
+      run: |
+        echo "Hello, World!"
+        echo "This is a test."
+        pwd
