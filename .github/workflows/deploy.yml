@@ -1,24 +1,15 @@
 #Workflow
-name: Github Actions 실행시켜보기
+name: Deploy To S3 And Invalidate Cloudfront
 
 on:
   push:
     branches:
     - main
 
-#Workflow는 여러개의 Job으로 이루어질 수 있고
 jobs:
-  My-Deploy-Job:
+  deploy:
     runs-on: ubuntu-latest
-
-    #하나의 Job은 여러개의 Step으로 이루어져있다.
     steps:
-    - name: Checkout repository
-      run: echo "Checkout repository"
-
-    - name: 여러 명령어 문장 작성하기
-    # 여러 Step을 한번에 실행할 수 있다.
-      run: |
-        echo "Hello, World!"
-        echo "This is a test."
-        pwd
+      - name: Github Repository 파일 불러오기
+        uses: actions/checkout@v4
+        #marketplace에서 확인
