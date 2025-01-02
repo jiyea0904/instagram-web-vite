@@ -32,3 +32,6 @@ jobs:
 
       - name: Upload repository files to S3
         run: aws s3 cp ./dist s3://facebook-web-page-001/ --recursive
+
+      - name: Cloudfront 캐시 무효화
+        run: aws cloudfront create-invalidation --distribution-id E3R9V7EWHX654R --paths "/*"
